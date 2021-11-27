@@ -1,0 +1,21 @@
+{
+  "name": "tetris-game",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:2516734343/tetris-game.git",
+  "author": "jingmeimei <jingmeimei@kuaishou.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.5.2",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
+  },
+  "scripts": {
+    "build": "webpack --mode=production",
+    "dev": "webpack-dev-server"
+  }
+}
