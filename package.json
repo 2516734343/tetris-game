@@ -6,6 +6,7 @@
   "author": "jingmeimei <jingmeimei@kuaishou.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/jquery": "^3.5.9",
     "clean-webpack-plugin": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
     "ts-loader": "^9.2.6",
@@ -17,5 +18,8 @@
   "scripts": {
     "build": "webpack --mode=production",
     "dev": "webpack-dev-server"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0"
   }
 }

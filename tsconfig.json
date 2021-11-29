@@ -101,7 +101,7 @@
     "sourceMap": true,
     "removeComments": true,
     "moduleResolution": "node",
-    "isolatedModules": true
+    "isolatedModules": true,
   },
   "include": ["./src"]
 }

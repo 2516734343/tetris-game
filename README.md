@@ -1,6 +1,7 @@
 # tetris-game
 
 俄罗斯方块游戏，webpack + jquery + typescript
+单一职责、开闭原则
 
 1. 安装 webpack
 2. 安装 html-webpack-plugin
