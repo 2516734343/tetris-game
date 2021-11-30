@@ -21,3 +21,10 @@ export enum MoveDirection {
   down,
 }
 
+
+export enum GameStatus {
+  init,
+  playing,
+  over,
+}
+

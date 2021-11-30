@@ -3,7 +3,7 @@ import { IViewer, MoveDirection } from "./core/types";
 import { SquarPageViewer } from "./core/viewer/SquarPageViewer";
 import $ from "jquery";
 import { SquareGroup } from "./core/SquareGroup";
-import { XLineShape, LShape, createTetris } from "./core/Tetris";
+import { createTetris } from "./core/Tetris";
 import { TetrisRule } from "./core/TetrisRule";
 
 
@@ -24,5 +24,9 @@ $('#add').click(function () {
   // TetrisRule.move(group, MoveDirection.down);
   TetrisRule.moveDirectly(group, MoveDirection.down);
  
+})
+
+$('#rotate').click(function () {
+  TetrisRule.rotate(group);
 })
 

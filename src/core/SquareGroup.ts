@@ -22,13 +22,17 @@ export class SquareGroup {
     this._centerPoint = p;
 
     // 中心点改变则改变所有小方块坐标
+    this.setSquarePoint();
+
+  }
+
+  private setSquarePoint() {
     this._shape.forEach((p, i) => {
       this._squares[i].point = {
         x: this._centerPoint.x + p.x,
         y: this._centerPoint.y + p.y
       }
     })
-
   }
 
   constructor(
@@ -45,6 +49,35 @@ export class SquareGroup {
     })
 
     this._squares = arr;
+    this.setSquarePoint();
+  }
+
+  protected isClock: boolean = true; // 旋转方向是否为顺时针
+
+  afterRotateShape(): Shape {
+    if (this.isClock) { // 顺时针
+      return this._shape.map(p => {
+        const newP: Point = {
+          x: -p.y,
+          y: p.x
+        }
+        return newP;
+      })
+    } else { // 逆时针
+      return this._shape.map(p => {
+        const newP: Point = {
+          x: p.y,
+          y: -p.x
+        }
+        return newP;
+      })
+    }
+  }
+
+  rotate() {
+    const newShape = this.afterRotateShape();
+    this._shape = newShape;
+    this.setSquarePoint();
   }
 
 }
