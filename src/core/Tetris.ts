@@ -110,7 +110,7 @@ export const shapes = [
 
 
 export const colors = [
-  'red','#fff','blue','green','orange'
+  'red','blue','green','orange'
 ]
 // 生产不同形状的方块
 export function createTetris(centerPoint: Point) {

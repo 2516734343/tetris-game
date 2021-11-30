@@ -5,28 +5,31 @@ import $ from "jquery";
 import { SquareGroup } from "./core/SquareGroup";
 import { createTetris } from "./core/Tetris";
 import { TetrisRule } from "./core/TetrisRule";
+import { Game } from "./core/Game";
+import { GamePageViewer } from "./core/viewer/GamePageViewer";
 
 
-const group = createTetris( { x: 3, y: 2 });
 
-group.squares.forEach(sq => {
-  sq.viewer = new SquarPageViewer(sq, $('#root'));
+let g = new Game(new GamePageViewer());
+
+
+$('#start').click(function () {
+  g.start();
 })
 
-
-$('#add').click(function () {
-  // 更改中心点的目标
-  const targetPoint = {
-    x: group.centerPoint.x,
-    y: group.centerPoint.y + 1,
-  }
-
-  // TetrisRule.move(group, MoveDirection.down);
-  TetrisRule.moveDirectly(group, MoveDirection.down);
- 
+$('#pause').click(function () {
+  g.pause();
 })
-
+$('#down').click(function () {
+  g.controlDown();
+})
+$('#left').click(function () {
+  g.controlLeft();
+})
+$('#right').click(function () {
+  g.controlRight();
+})
 $('#rotate').click(function () {
-  TetrisRule.rotate(group);
+  g.controlRotate();
 })
 
