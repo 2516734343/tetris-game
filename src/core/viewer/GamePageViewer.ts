@@ -7,12 +7,19 @@ import GameConfig from "../GameConfig";
 import PageConfig from "./PageConfig";
 
 export class GamePageViewer implements GameViewer {
+  onGamePause(): void {
+    this.msgDom.html('游戏暂停');
+  }
+  onGameOver(): void {
+    this.msgDom.html('游戏结束');
+  }
   showScore(score: number): void {
-    this.scoreDom.html(`分数${score.toString()}`);
+    this.scoreDom.html(`分数：${score.toString()}`);
   }
   private nextDom = $('#next');
   private panelDom = $('#panel');
   private scoreDom = $('#score');
+  private msgDom = $('#msg');
 
   init(game: Game): void {
     // 设置宽高

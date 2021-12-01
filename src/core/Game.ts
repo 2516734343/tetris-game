@@ -21,7 +21,7 @@ export class Game {
   private _timer?: any;
 
   // 自动下落间隔时间
-  private _duration?: number = 1000;
+  private _duration?: number = GameConfig.level.shift()?.duration;
 
   // 已经存在的方块
   private _exists: Square[] = [];
@@ -35,11 +35,23 @@ export class Game {
   public set score(val) {
     this._score = val;
     this._viewer.showScore(val);
+    // 级别
+    const level = GameConfig.level.filter(it => it.score < val).pop()!;
+    if (level.duration === this._duration) {
+      return;
+    }
+    this._duration = level.duration;
+    if (this._timer) {
+      clearInterval(this._timer);
+      this._timer = undefined;
+      this.autoDrop();
+    }
   }
 
   constructor(private _viewer: GameViewer) {
     this.createNext();
     this._viewer.init(this);
+    this._viewer.showScore(this._score);
     
   }
 
@@ -81,6 +93,7 @@ export class Game {
       this._gameStatus = GameStatus.pause;
       clearInterval(this._timer);
       this._timer = undefined;
+      this._viewer.onGamePause();
     }
   }
 
@@ -136,7 +149,7 @@ export class Game {
       this._gameStatus = GameStatus.over;
       clearInterval(this._timer);
       this._timer = undefined;
-
+      this._viewer.onGameOver();
       return;
     };
     this.createNext();

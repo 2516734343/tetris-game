@@ -49,5 +49,11 @@ export interface GameViewer {
 
   // 显示分数
   showScore(score: number): void;
+
+  // 游戏暂停
+  onGamePause(): void;
+
+  // 游戏结束
+  onGameOver(): void;
 }
 
